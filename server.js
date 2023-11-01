@@ -1,14 +1,10 @@
-// defining the server port
-const port = 5000;
-
-// initializing installed dependencies
-import express from 'express';
 import cors from 'cors';
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import express from 'express';
+import router from './router.js';
 
 const app = express();
 app.use(cors());
-app.use('/', createProxyMiddleware({ target: 'https://v5api.tiltify.com', changeOrigin: true }));
+app.use('/', router);
 
-// listening for port 5000
-app.listen(5000, () => console.log(`Server is running on ${port}`));
+const port = 5000;
+app.listen(port, () => console.log(`Tiltify API Proxy server is running on ${port}`));
