@@ -6,8 +6,8 @@ const tiltifyApi = 'https://v5api.tiltify.com';
 class Client {
 	constructor() {
 		// Get oauth credentials from environment variables
-		this.client_id = process.env.CLIENT_ID;
-		this.client_secret = process.env.CLIENT_SECRET;
+		this.client_id = process.env.TILTIFY_CLIENT_ID;
+		this.client_secret = process.env.TILTIFY_CLIENT_SECRET;
 	}
 
 	async getAccessToken() {
@@ -29,7 +29,6 @@ class Client {
 
 	async request(path) {
 		// Get initial token
-		this.thing |= 'blah'
 		this.token = this.token || (await this.getAccessToken()).access_token;
 
 		// Fetch whatever path was requested
